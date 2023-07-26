@@ -23,4 +23,9 @@ public class VariableController {
     public List<VariableCost> findVariableByCost(@PathVariable Integer id_cost){
         return service.findVariableByCost(id_cost);
     }
+
+    @GetMapping("/{name_variable}/{value}")
+    public VariableCost setValueVariable(@PathVariable String name_variable, @PathVariable Double value){
+        return service.setValueVariable(name_variable, value);
+    }
 }
