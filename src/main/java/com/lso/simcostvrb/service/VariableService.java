@@ -24,10 +24,6 @@ public class VariableService {
         return repository.findDistinctVariable(id_cost, name_variable);
     }
 
-    public Boolean variableExist(Optional<VariableCost> optionalVariableCost) {
-        return optionalVariableCost.isPresent();
-    }
-
     public List<VariableCost> findVariableByCost(Integer id_cost) {
         return repository.findVariableByCost(id_cost);
     }
