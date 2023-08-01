@@ -15,6 +15,6 @@ public interface VariableRepository extends JpaRepository<VariableCost, Integer>
     List<VariableCost> findVariableByCost(Integer id_cost);
 
     @Query("SELECT  v FROM VariableCost  v WHERE v.id_cost = :id_cost AND v.name_variable = :name_variable")
-    Optional<VariableCost> findDistinctVariable(Integer id_cost, String name);
+    Optional<VariableCost> findDistinctVariable(Integer id_cost, String name_variable);
 
 }
