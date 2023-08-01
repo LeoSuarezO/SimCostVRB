@@ -14,12 +14,12 @@ public class VariableService {
     private VariableRepository repository;
 
     public VariableCost saveVariable(VariableCost variableCost) {
-        if (variableExist(repository.findDistinctVariable(variableCost.getId_cost(), variableCost.getName_variable()))) {
-            return null;
-        }
         return repository.save(variableCost);
     }
 
+    public void dropVariable(VariableCost variableCost){
+        repository.delete(variableCost);
+    }
     public Optional<VariableCost> findDistinctVariable(Integer id_cost, String name_variable) {
         return repository.findDistinctVariable(id_cost, name_variable);
     }
@@ -30,6 +30,10 @@ public class VariableService {
 
     public List<VariableCost> findVariableByCost(Integer id_cost) {
         return repository.findVariableByCost(id_cost);
+    }
+
+    public Optional<VariableCost> findVariableById(Integer id_variable){
+        return  repository.findById(id_variable);
     }
 
     public void setValueVariable(Integer id_cost, VariableCost variableCost) {
@@ -47,5 +51,4 @@ public class VariableService {
             }
         }
     }
-
 }
