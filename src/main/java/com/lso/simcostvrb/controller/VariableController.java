@@ -21,7 +21,8 @@ public class VariableController {
     public ResponseEntity<VariableCost> saveVariable(@RequestBody VariableCost variableCost) {
         Optional<VariableCost> optionalVariableCost = service.findDistinctVariable(variableCost.getId_cost(), variableCost.getName_variable());
         if(optionalVariableCost.isPresent()){
-            return new ResponseEntity<>(HttpStatus.CONFLICT);
+            System.out.println(variableCost);
+            return new ResponseEntity<>(variableCost, HttpStatus.CONFLICT);
         }
         return new ResponseEntity<>(service.saveVariable(variableCost), HttpStatus.CREATED);
     }
@@ -72,6 +73,12 @@ public class VariableController {
             return new ResponseEntity<>(variableCost, HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    @PostMapping("/getVariable")
+    public VariableCost getDistinctVariable(@RequestBody VariableCost variableCost) {
+        Optional<VariableCost> optionalVariableCost = service.findDistinctVariable(variableCost.getId_cost(), variableCost.getName_variable());
+        return optionalVariableCost.orElse(null);
     }
 
 }
